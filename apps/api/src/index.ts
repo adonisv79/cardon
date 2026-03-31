@@ -8,17 +8,11 @@ try {
 import Fastify from "fastify";
 import swagger from "@fastify/swagger";
 import swaggerUI from "@fastify/swagger-ui";
-import { PrismaPg } from "@prisma/adapter-pg";
-import { PrismaClient } from "../generated/prisma/client";
 import { redisPlugin } from "./plugins/redis";
+import { prismaPlugin } from "./plugins/prisma";
+import { cardRoutes } from "./routes/cards";
 
 const fastify = Fastify({ logger: true });
-const prisma = new PrismaClient({
-  adapter: new PrismaPg({
-    connectionString: process.env.DATABASE_URL,
-    connectionTimeoutMillis: 5000,
-  }),
-});
 
 async function start() {
   // 1. Register Swagger
@@ -32,10 +26,12 @@ async function start() {
 
   // 2. Register Redis
   await fastify.register(redisPlugin);
+  await fastify.register(prismaPlugin);
 
+  await fastify.register(cardRoutes);
   // 3. Simple Test Route (Using Redis & Prisma)
   fastify.get("/status", async () => {
-    const userCount = await prisma.user.count();
+    const userCount = await fastify.prisma.user.count();
     const redisStatus = await fastify.redis.ping();
     return { users: userCount, redis: redisStatus };
   });

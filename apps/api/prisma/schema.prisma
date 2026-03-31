@@ -27,3 +27,18 @@ model Match {
   players   User[]
   createdAt DateTime @default(now())
 }
+
+model Card {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  imageUrl    String
+  manaCost    Int      @default(0)
+  cardType    String   // "CREATURE", "SPELL", etc.
+  
+  // For now, we store specific stats as optional fields
+  attack      Int?
+  health      Int?
+  
+  createdAt   DateTime @default(now())
+}
