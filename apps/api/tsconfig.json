@@ -1,0 +1,12 @@
+// Source - https://stackoverflow.com/a/62099904
+// Posted by vadimk7, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-03-31, License - CC BY-SA 4.0
+
+{
+  "compilerOptions": {
+    "esModuleInterop": true
+  },
+  "ts-node": {
+    "experimentalResolver": true
+  }
+}

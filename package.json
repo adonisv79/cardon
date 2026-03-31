@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "name": "@cardon/monorepo",
+  "version": "1.0.0",
+  "scripts": {
+    "dev:api": "npm run dev -w apps/api",
+    "dev:client": "npm run dev -w apps/client",
+    "build:client": "npm run build -w apps/client",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cardon",
+    "monorepo"
+  ],
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "author": "Adonis Lee Villamor",
+  "license": "ISC",
+  "description": "Cardon Monorepo"
+}

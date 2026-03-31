@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+dist/
+.npm/
+
+# Environment Variables (CRITICAL)
+.env
+.env.local
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+*.log
+
+# Prisma
+/apps/api/prisma/dev.db
+/apps/api/prisma/dev.db-journal
+
+# Vite
+/apps/client/dist/
