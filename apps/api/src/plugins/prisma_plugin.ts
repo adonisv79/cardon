@@ -12,7 +12,7 @@ declare module "fastify" {
 export const prismaPlugin = fp(async function (fastify: FastifyInstance) {
   const prisma = new PrismaClient({
     adapter: new PrismaPg({
-      connectionString: process.env.DATABASE_URL,
+      connectionString: fastify.config.DATABASE_URL,
       connectionTimeoutMillis: 5000,
     }),
   });

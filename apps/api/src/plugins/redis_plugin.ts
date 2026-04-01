@@ -9,7 +9,7 @@ declare module "fastify" {
 }
 
 export const redisPlugin = fp(async function (fastify: FastifyInstance) {
-  const redis = new Redis(process.env.REDIS_URL || "redis://localhost:6373");
+  const redis = new Redis(fastify.config.REDIS_URL);
 
   fastify.decorate("redis", redis);
 
